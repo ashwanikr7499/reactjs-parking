@@ -11,11 +11,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="container">
-        <h3 className="m-3 d-flex justify-content-centre">
-          Parking lot application
-        </h3>
-        <h5 className="m-3 d-flex justify-content-centre">Hello User</h5>
+        <h3 className="m-3 d-flex justify-content-centre"> Parking lot application!! Hey ash_k,</h3>
+      
         <Navigation />
+       
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/vehicle" component={Vehicle} />
