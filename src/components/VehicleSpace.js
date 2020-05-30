@@ -1,20 +1,29 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
+import { Button, ButtonToolbar } from "react-bootstrap";
+import {AddVehModal} from "./AddVehModal"
 
 export class VehicleSpace extends Component {
   constructor(props) {
     super(props);
-    this.state = { vehs: [] };
+    this.state = { vehs: [] ,addModalShow:false};
   }
-  async componentDidMount() {
-    //this.refreshList();
-    const url = "http://localhost:8080/slots/";
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    this.setState({ vehs: data });
-  }
-  refreshList() {
+   componentDidMount() {
+    this.refreshList();
+    
+    }
+    componentDidUpdate()
+    { this.refreshList();}
+    
+    async refreshList()
+    {
+        const url = "http://localhost:8080/slots/";
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        this.setState({ vehs: data });
+    }
+  //refreshList() {
     // this.setState({
     //   vehs: [
     //     { slotNo: 1, vehicleNo: "none", slotType: "2", empty: "true" },
@@ -27,11 +36,13 @@ export class VehicleSpace extends Component {
     //     console.log(data);
     //     this.setState({ vehs: data });
     //   });
-  }
-  render() {
+  //}
+    render() {
+      
     const { vehs } = this.state;
-    return (
-      <div className="mt-5 d-flex justify-content-left">
+        let addModalClose = () => this.setState({ addModalShow: false });
+        return (
+      <div>
         <Table className="mt-4" striped bordered hover size="sm">
           <thead>
             <tr>
@@ -51,8 +62,12 @@ export class VehicleSpace extends Component {
               </tr>
             ))}
           </tbody>
-        </Table>
-      </div>
-    );
+                </Table>
+            <ButtonToolbar>
+                <Button variant="primary" onClick={()=>this.setState({addModalShow:true})}>Add Vehicle</Button>
+            <AddVehModal show={this.state.addModalShow} onHide={addModalClose}></AddVehModal>    
+            </ButtonToolbar>
+      
+    </div>)
   }
 }
