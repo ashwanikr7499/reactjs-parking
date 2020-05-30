@@ -11,19 +11,13 @@ export class Vehicle extends Component {
   }
 
   componentDidMount() {
+    //called after all components are rendered
     this.refreshList();
   }
   componentDidUpdate() {
     //to update list immediately after closing popup
     this.refreshList();
   }
-  // deleteDep()
-  // {
-  //     if (window.confirm("Áre you sure?"))
-  //     {
-  //         fetch("localhost:8080/vehicles/exit/");
-  //     }
-  // }
 
   async refreshList() {
     const url = "http://localhost:8080/vehicles/all/";
@@ -37,7 +31,7 @@ export class Vehicle extends Component {
     let addModalClose = () => this.setState({ addModalShow: false });
     let deleteModalClose = () => this.setState({ deleteModalShow: false });
     return (
-      <div>
+      <div class="row">
         <Table className="mt-4" striped bordered hover size="sm">
           <thead>
             <tr>
@@ -72,14 +66,14 @@ export class Vehicle extends Component {
                     >
                       Delete
                     </Button>
+
                     <DeleteVehModal
                       show={this.state.deleteModalShow}
                       //invoking the close/cross buuton
-                                onHide={deleteModalClose}
-                                //will be passed={render  const 1st line or this.state.vehid}
-                                vehid={vehid}
-                                vehtime={vehtime}
-                            
+                      onHide={deleteModalClose}
+                      //will be passed={render  const 1st line or this.state.vehid}
+                      vehid={vehid}
+                      vehtime={vehtime}
                     ></DeleteVehModal>
                   </ButtonToolbar>
                 </td>
@@ -87,6 +81,7 @@ export class Vehicle extends Component {
             ))}
           </tbody>
         </Table>
+
         <ButtonToolbar>
           <Button
             variant="primary"
@@ -94,6 +89,7 @@ export class Vehicle extends Component {
           >
             Add Vehicle
           </Button>
+
           <AddVehModal
             show={this.state.addModalShow}
             onHide={addModalClose}
