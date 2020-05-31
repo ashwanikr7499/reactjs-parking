@@ -29,20 +29,7 @@ export class QueryVehicleTypes extends Component {
     const data0 = await response0.json();
     this.setState({ vehs0: data0 });
 
-    const url2 = "http://localhost:8080/vehicles/2/";
-    const response2 = await fetch(url2);
-    const data2 = await response2.json();
-    this.setState({ vehs2: data2 });
-
-    const url3 = "http://localhost:8080/vehicles/3/";
-    const response3 = await fetch(url3);
-    const data3 = await response3.json();
-    this.setState({ vehs3: data3 });
-
-    const url4 = "http://localhost:8080/vehicles/4/";
-    const response4 = await fetch(url4);
-    const data4 = await response4.json();
-    this.setState({ vehs4: data4 });
+    
   }
   async componentDidUpdate() {
     //called after components are updated
@@ -63,18 +50,36 @@ export class QueryVehicleTypes extends Component {
     // this.setState({ vehs3: data3 });
   }
 
-  onClickButton0 = () => {
+  onClickButton0 = async () => {
     this.setState({ typeofveh: 0 });
+    const url0 = "http://localhost:8080/vehicles/all/";
+    const response0 = await fetch(url0);
+    const data0 = await response0.json();
+    this.setState({ vehs0: data0 });
+
+    
   };
-  onClickButton2 = () => {
+  onClickButton2 = async () => {
     this.setState({ typeofveh: 2 });
+    const url2 = "http://localhost:8080/vehicles/2/";
+    const response2 = await fetch(url2);
+    const data2 = await response2.json();
+    this.setState({ vehs2: data2 });
   };
 
-  onClickButton3 = () => {
+  onClickButton3 = async () => {
     this.setState({ typeofveh: 3 });
+    const url3 = "http://localhost:8080/vehicles/3/";
+    const response3 = await fetch(url3);
+    const data3 = await response3.json();
+    this.setState({ vehs3: data3 });
   };
-  onClickButton4 = () => {
+  onClickButton4 = async () => {
     this.setState({ typeofveh: 4 });
+    const url4 = "http://localhost:8080/vehicles/4/";
+    const response4 = await fetch(url4);
+    const data4 = await response4.json();
+    this.setState({ vehs4: data4 });
   };
   show0() {
     const { vehs0, vehid, vehtime } = this.state;
