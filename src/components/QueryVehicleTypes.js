@@ -11,12 +11,14 @@ export class QueryVehicleTypes extends Component {
       vehs0: [],
       vehs2: [],
       vehs3: [],
+      vehs4: [],
       deleteModalShow: false,
       typeofveh: 0,
     };
     this.show0 = this.show0.bind(this);
     this.show2 = this.show2.bind(this);
     this.show3 = this.show3.bind(this);
+    this.show4 = this.show4.bind(this);
   }
 
   async componentDidMount() {
@@ -25,41 +27,40 @@ export class QueryVehicleTypes extends Component {
     const url0 = "http://localhost:8080/vehicles/all/";
     const response0 = await fetch(url0);
     const data0 = await response0.json();
-    //console.log(data);
     this.setState({ vehs0: data0 });
 
     const url2 = "http://localhost:8080/vehicles/2/";
     const response2 = await fetch(url2);
     const data2 = await response2.json();
-    //console.log(data);
     this.setState({ vehs2: data2 });
 
     const url3 = "http://localhost:8080/vehicles/3/";
     const response3 = await fetch(url3);
     const data3 = await response3.json();
-    //console.log(data);
     this.setState({ vehs3: data3 });
+
+    const url4 = "http://localhost:8080/vehicles/4/";
+    const response4 = await fetch(url4);
+    const data4 = await response4.json();
+    this.setState({ vehs4: data4 });
   }
   async componentDidUpdate() {
     //called after components are updated
-
-    const url0 = "http://localhost:8080/vehicles/all/";
-    const response0 = await fetch(url0);
-    const data0 = await response0.json();
-    //console.log(data);
-    this.setState({ vehs0: data0 });
-
-    const url2 = "http://localhost:8080/vehicles/2/";
-    const response2 = await fetch(url2);
-    const data2 = await response2.json();
-    //console.log(data);
-    this.setState({ vehs2: data2 });
-
-    const url3 = "http://localhost:8080/vehicles/3/";
-    const response3 = await fetch(url3);
-    const data3 = await response3.json();
-    //console.log(data);
-    this.setState({ vehs3: data3 });
+    // const url0 = "http://localhost:8080/vehicles/all/";
+    // const response0 = await fetch(url0);
+    // const data0 = await response0.json();
+    // //console.log(data);
+    // this.setState({ vehs0: data0 });
+    // const url2 = "http://localhost:8080/vehicles/2/";
+    // const response2 = await fetch(url2);
+    // const data2 = await response2.json();
+    // //console.log(data);
+    // this.setState({ vehs2: data2 });
+    // const url3 = "http://localhost:8080/vehicles/3/";
+    // const response3 = await fetch(url3);
+    // const data3 = await response3.json();
+    // //console.log(data);
+    // this.setState({ vehs3: data3 });
   }
 
   onClickButton0 = () => {
@@ -72,6 +73,65 @@ export class QueryVehicleTypes extends Component {
   onClickButton3 = () => {
     this.setState({ typeofveh: 3 });
   };
+  onClickButton4 = () => {
+    this.setState({ typeofveh: 4 });
+  };
+  show0() {
+    const { vehs0, vehid, vehtime } = this.state;
+    let deleteModalClose = () => this.setState({ deleteModalShow: false });
+
+    return (
+      <Table className="mt-4" striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>vehicleNo</th>
+            <th>slotNo</th>
+            <th>vehicleType</th>
+            <th>time</th>
+            <th>colour</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          {vehs0.map((veh0) => (
+            <tr key={veh0.vehicleNo}>
+              <td>{veh0.vehicleNo}</td>
+              <td>{veh0.slotNo}</td>
+              <td>{veh0.vehicleType}</td>
+              <td>{veh0.time}</td>
+              <td>{veh0.colour}</td>
+              <td>
+                <ButtonToolbar>
+                  <Button
+                    className="mr-2"
+                    variant="danger"
+                    onClick={() =>
+                      this.setState({
+                        deleteModalShow: true,
+                        vehid: veh0.vehicleNo,
+                        vehtime: veh0.time,
+                      })
+                    }
+                  >
+                    Delete
+                  </Button>
+
+                  <DeleteVehModal
+                    show={this.state.deleteModalShow}
+                    //invoking the close/cross buuton
+                    onHide={deleteModalClose}
+                    //will be passed={render  const 1st line or this.state.vehid}
+                    vehid={vehid}
+                    vehtime={vehtime}
+                  ></DeleteVehModal>
+                </ButtonToolbar>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    );
+  }
 
   show2() {
     const { vehs2, vehid, vehtime } = this.state;
@@ -184,8 +244,8 @@ export class QueryVehicleTypes extends Component {
       </Table>
     );
   }
-  show0() {
-    const { vehs0, vehid, vehtime } = this.state;
+  show4() {
+    const { vehs4, vehid, vehtime } = this.state;
     let deleteModalClose = () => this.setState({ deleteModalShow: false });
 
     return (
@@ -201,13 +261,13 @@ export class QueryVehicleTypes extends Component {
           </tr>
         </thead>
         <tbody>
-          {vehs0.map((veh0) => (
-            <tr key={veh0.vehicleNo}>
-              <td>{veh0.vehicleNo}</td>
-              <td>{veh0.slotNo}</td>
-              <td>{veh0.vehicleType}</td>
-              <td>{veh0.time}</td>
-              <td>{veh0.colour}</td>
+          {vehs4.map((veh4) => (
+            <tr key={veh4.vehicleNo}>
+              <td>{veh4.vehicleNo}</td>
+              <td>{veh4.slotNo}</td>
+              <td>{veh4.vehicleType}</td>
+              <td>{veh4.time}</td>
+              <td>{veh4.colour}</td>
               <td>
                 <ButtonToolbar>
                   <Button
@@ -216,8 +276,8 @@ export class QueryVehicleTypes extends Component {
                     onClick={() =>
                       this.setState({
                         deleteModalShow: true,
-                        vehid: veh0.vehicleNo,
-                        vehtime: veh0.time,
+                        vehid: veh4.vehicleNo,
+                        vehtime: veh4.time,
                       })
                     }
                   >
@@ -241,14 +301,13 @@ export class QueryVehicleTypes extends Component {
     );
   }
 
-  // etc...
-
   render() {
     return (
       <div>
         <button onClick={this.onClickButton0}>All VEHICLES</button>
-        <button onClick={this.onClickButton2}>All 2 Wheelers</button>
-        <button onClick={this.onClickButton3}>All 3 Wheelers</button>
+        <button onClick={this.onClickButton2}>2 Wheelers</button>
+        <button onClick={this.onClickButton3}>3 Wheelers</button>
+        <button onClick={this.onClickButton4}>4 Wheelers</button>
 
         {(() => {
           if (this.state.typeofveh === 0) {
@@ -258,6 +317,8 @@ export class QueryVehicleTypes extends Component {
             return this.show2();
           } else if (this.state.typeofveh === 3) {
             return this.show3();
+          } else if (this.state.typeofveh === 4) {
+            return this.show4();
           }
         })()}
       </div>
