@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import { Button, ButtonToolbar } from "react-bootstrap";
 import { AddVehModal } from "./AddVehModal";
 import { DeleteVehModal } from "./DeleteVehModal";
+import { QueryVehicleTypes } from "./QueryVehicleTypes";
 
 export class Vehicle extends Component {
   constructor(props) {
@@ -31,8 +32,11 @@ export class Vehicle extends Component {
     let addModalClose = () => this.setState({ addModalShow: false });
     let deleteModalClose = () => this.setState({ deleteModalShow: false });
     return (
-      <div class="row">
+      <div>
+        <QueryVehicleTypes />
+
         <Table className="mt-4" striped bordered hover size="sm">
+          
           <thead>
             <tr>
               <th>vehicleNo</th>
