@@ -30,13 +30,13 @@ export class DeleteVehModal extends Component {
       .then((res) => res.text())
       .then(
         (result) => {
-          //alert(result);
-          this.setState({ snackbaropen: true, snackbarmsg: result });
+          alert(result);
+          // this.setState({ snackbaropen: true, snackbarmsg: result });
         },
         //error in consuming api
         (error) => {
-          //alert("Failed");
-          this.setState({ snackbaropen: true, snackbarmsg: "Failed" });
+          alert("Failed");
+          //this.setState({ snackbaropen: true, snackbarmsg: "Failed" });
         }
       );
   }
@@ -77,25 +77,25 @@ export class DeleteVehModal extends Component {
               <Col sm={6}>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group controlId="vehicleNo">
-                    <Form.Label>vehicleNo</Form.Label>
+                    <Form.Label>Vehicle Number</Form.Label>
                     <Form.Control
                       type="text"
                       name="vehicleNo"
                       required
                       disabled
                       defaultValue={this.props.vehid}
-                      placeholder="vehicleNo"
+                      placeholder="Vehicle Number"
                     />
                   </Form.Group>
 
                   <Form.Group controlId="time">
-                    <Form.Label>time</Form.Label>
+                    <Form.Label>Exit Time</Form.Label>
                     <Form.Control
                       type="text"
                       name="time"
                       required
                       defaultValue={this.props.vehtime}
-                      placeholder="time"
+                      placeholder="Exit Time"
                     />
                   </Form.Group>
 

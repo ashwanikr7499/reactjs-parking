@@ -10,12 +10,14 @@ export class VehicleSpace extends Component {
       vehs2: [],
       vehs3: [],
       vehs4: [],
+      vehs5: [],
       typeofveh: 0,
     };
     this.show0 = this.show0.bind(this);
     this.show2 = this.show2.bind(this);
     this.show3 = this.show3.bind(this);
     this.show4 = this.show4.bind(this);
+    this.show5 = this.show5.bind(this);
   }
   async componentDidMount() {
     //called after all components are rendered
@@ -23,8 +25,6 @@ export class VehicleSpace extends Component {
     const response0 = await fetch(url0);
     const data0 = await response0.json();
     this.setState({ vehs0: data0 });
-
-   
   }
 
   onClickButton0 = async () => {
@@ -55,6 +55,13 @@ export class VehicleSpace extends Component {
     const response4 = await fetch(url4);
     const data4 = await response4.json();
     this.setState({ vehs4: data4 });
+  };
+  onClickButton5 = async () => {
+    this.setState({ typeofveh: 5 });
+    const url5 = "http://localhost:8080/slots/heavy/";
+    const response5 = await fetch(url5);
+    const data5 = await response5.json();
+    this.setState({ vehs5: data5 });
   };
   show0() {
     const { vehs0 } = this.state;
@@ -156,6 +163,31 @@ export class VehicleSpace extends Component {
       </Table>
     );
   }
+  show5() {
+    const { vehs5 } = this.state;
+    return (
+      <Table className="mt-4" striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>slotNo</th>
+            <th>vehicleNo</th>
+            <th>slotType</th>
+            <th>isEmpty</th>
+          </tr>
+        </thead>
+        <tbody>
+          {vehs5.map((veh5) => (
+            <tr key={veh5.slotNo}>
+              <td>{veh5.slotNo}</td>
+              <td>{veh5.vehicleNo}</td>
+              <td>{veh5.slotType}</td>
+              <td>{veh5.isEmpty}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    );
+  }
   render() {
     return (
       <div>
@@ -163,6 +195,7 @@ export class VehicleSpace extends Component {
         <button onClick={this.onClickButton2}>2 Wheeler Slots</button>
         <button onClick={this.onClickButton3}>3 Wheeler Slots</button>
         <button onClick={this.onClickButton4}>4 Wheeler Slots</button>
+        <button onClick={this.onClickButton5}>Heavy Vehicle Slots</button>
 
         {(() => {
           if (this.state.typeofveh === 0) {
@@ -174,6 +207,8 @@ export class VehicleSpace extends Component {
             return this.show3();
           } else if (this.state.typeofveh === 4) {
             return this.show4();
+          } else if (this.state.typeofveh === 5) {
+            return this.show5();
           }
         })()}
       </div>

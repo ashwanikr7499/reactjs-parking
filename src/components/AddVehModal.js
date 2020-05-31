@@ -5,7 +5,6 @@ import IconButton from "@material-ui/core/IconButton";
 export class AddVehModal extends Component {
   constructor(props) {
     super(props);
-    //why?
     this.state = { snackbaropen: false, snackbarmsg: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -79,52 +78,52 @@ export class AddVehModal extends Component {
               <Col sm={6}>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group controlId="vehicleNo">
-                    <Form.Label>vehicleNo</Form.Label>
+                    <Form.Label>Vehicle Number</Form.Label>
                     <Form.Control
                       type="text"
                       name="vehicleNo"
                       required
-                      placeholder="vehicleNo"
+                      placeholder="Enter Vehicle Number"
                     />
                   </Form.Group>
 
                   <Form.Group controlId="slotNo">
-                    <Form.Label>slotNo</Form.Label>
+                    <Form.Label>Slot Number</Form.Label>
                     <Form.Control
                       type="text"
                       name="slotNo"
                       required
-                      placeholder="slotNo"
+                      placeholder="Enter an empty slot to Park Vehicle "
                     />
                   </Form.Group>
 
                   <Form.Group controlId="vehicleType">
-                    <Form.Label>vehicleType</Form.Label>
+                    <Form.Label>Vehicle Type</Form.Label>
                     <Form.Control
                       type="text"
                       name="vehicleType"
                       required
-                      placeholder="vehicleType"
+                      placeholder="Enter 2,3,4 or heavy "
                     />
                   </Form.Group>
 
                   <Form.Group controlId="time">
-                    <Form.Label>time</Form.Label>
+                    <Form.Label>In Time</Form.Label>
                     <Form.Control
                       type="text"
                       name="time"
                       required
-                      placeholder="time"
+                      placeholder="Enter in-time"
                     />
                   </Form.Group>
 
                   <Form.Group controlId="colour">
-                    <Form.Label>colour</Form.Label>
+                    <Form.Label>Colour</Form.Label>
                     <Form.Control
                       type="text"
                       name="colour"
                       required
-                      placeholder="colour"
+                      placeholder="Colour of your vehicle"
                     />
                   </Form.Group>
 
