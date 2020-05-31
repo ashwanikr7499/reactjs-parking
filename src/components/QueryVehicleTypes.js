@@ -13,6 +13,7 @@ export class QueryVehicleTypes extends Component {
       vehs3: [],
       vehs4: [],
       vehs5: [],
+      vehs6: [],
       deleteModalShow: false,
       typeofveh: 0,
     };
@@ -21,6 +22,7 @@ export class QueryVehicleTypes extends Component {
     this.show3 = this.show3.bind(this);
     this.show4 = this.show4.bind(this);
     this.show5 = this.show5.bind(this);
+    this.show6 = this.show6.bind(this);
   }
 
   async componentDidMount() {
@@ -85,6 +87,13 @@ export class QueryVehicleTypes extends Component {
     const response5 = await fetch(url5);
     const data5 = await response5.json();
     this.setState({ vehs5: data5 });
+  };
+  onClickButton6 = async () => {
+    this.setState({ typeofveh: 6 });
+    const url6 = "http://localhost:8080/vehicles/sortByTime/";
+    const response6 = await fetch(url6);
+    const data6 = await response6.json();
+    this.setState({ vehs6: data6 });
   };
 
   show0() {
@@ -367,7 +376,62 @@ export class QueryVehicleTypes extends Component {
       </Table>
     );
   }
+  show6() {
+    const { vehs6, vehid, vehtime } = this.state;
+    let deleteModalClose = () => this.setState({ deleteModalShow: false });
 
+    return (
+      <Table className="mt-4" striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>vehicleNo</th>
+            <th>slotNo</th>
+            <th>vehicleType</th>
+            <th>time</th>
+            <th>colour</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          {vehs6.map((veh6) => (
+            <tr key={veh6.vehicleNo}>
+              <td>{veh6.vehicleNo}</td>
+              <td>{veh6.slotNo}</td>
+              <td>{veh6.vehicleType}</td>
+              <td>{veh6.time}</td>
+              <td>{veh6.colour}</td>
+              <td>
+                <ButtonToolbar>
+                  <Button
+                    className="mr-2"
+                    variant="danger"
+                    onClick={() =>
+                      this.setState({
+                        deleteModalShow: true,
+                        vehid: veh6.vehicleNo,
+                        vehtime: veh6.time,
+                      })
+                    }
+                  >
+                    EXIT
+                  </Button>
+
+                  <DeleteVehModal
+                    show={this.state.deleteModalShow}
+                    //invoking the close/cross buuton
+                    onHide={deleteModalClose}
+                    //will be passed={render  const 1st line or this.state.vehid}
+                    vehid={vehid}
+                    vehtime={vehtime}
+                  ></DeleteVehModal>
+                </ButtonToolbar>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    );
+  }
   render() {
     return (
       <div>
@@ -377,6 +441,7 @@ export class QueryVehicleTypes extends Component {
           <button onClick={this.onClickButton3}>3 Wheelers</button>
           <button onClick={this.onClickButton4}>4 Wheelers</button>
           <button onClick={this.onClickButton5}>Heavy Weight</button>
+          <button onClick={this.onClickButton6}>Sort By Time</button>
         </div>
         {(() => {
           if (this.state.typeofveh === 0) {
@@ -390,6 +455,8 @@ export class QueryVehicleTypes extends Component {
             return this.show4();
           } else if (this.state.typeofveh === 5) {
             return this.show5();
+          } else if (this.state.typeofveh === 6) {
+            return this.show6();
           }
         })()}
       </div>
