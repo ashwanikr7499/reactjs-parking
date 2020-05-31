@@ -61,7 +61,7 @@ export class AddVehModal extends Component {
               color="inherit"
               onClick={this.snackbarClose}
             >
-              X
+              x
             </IconButton>,
           ]}
         />

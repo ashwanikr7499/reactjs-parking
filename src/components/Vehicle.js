@@ -11,31 +11,31 @@ export class Vehicle extends Component {
     this.state = { vehs: [], addModalShow: false, deleteModalShow: false };
   }
 
-  componentDidMount() {
-    //called after all components are rendered
-    this.refreshList();
-  }
-  componentDidUpdate() {
-    //to update list immediately after closing popup
-    this.refreshList();
-  }
+  // componentDidMount() {
+  //   //called after all components are rendered
+  //   this.refreshList();
+  // }
+  // componentDidUpdate() {
+  //   //to update list immediately after closing popup
+  //   this.refreshList();
+  // }
 
-  async refreshList() {
-    const url = "http://localhost:8080/vehicles/all/";
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    this.setState({ vehs: data });
-  }
+  // async refreshList() {
+  //   const url = "http://localhost:8080/vehicles/all/";
+  //   const response = await fetch(url);
+  //   const data = await response.json();
+  //   console.log(data);
+  //   this.setState({ vehs: data });
+  // }
   render() {
     const { vehs, vehid, vehtime } = this.state;
     let addModalClose = () => this.setState({ addModalShow: false });
-    let deleteModalClose = () => this.setState({ deleteModalShow: false });
+    //let deleteModalClose = () => this.setState({ deleteModalShow: false });
     return (
       <div>
         <QueryVehicleTypes />
 
-        <Table className="mt-4" striped bordered hover size="sm">
+        {/* <Table className="mt-4" striped bordered hover size="sm">
           
           <thead>
             <tr>
@@ -84,7 +84,7 @@ export class Vehicle extends Component {
               </tr>
             ))}
           </tbody>
-        </Table>
+        </Table> */}
 
         <ButtonToolbar>
           <Button
