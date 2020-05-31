@@ -30,9 +30,7 @@ export class AddVehModal extends Component {
         colour: event.target.colour.value,
       }),
     })
-      //console.log(result);
-
-      .then((res) => res.json())
+      .then((res) => res.text())
       .then(
         (result) => {
           //alert(result);
@@ -40,8 +38,8 @@ export class AddVehModal extends Component {
         },
         //error in consuming api
         (error) => {
-          //alert("Failed");
-          this.setState({ snackbaropen: true, snackbarmsg: "Failed" });
+          //alert(error);
+          this.setState({ snackbaropen: true, snackbarmsg: error });
         }
       );
   }

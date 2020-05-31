@@ -28,8 +28,6 @@ export class QueryVehicleTypes extends Component {
     const response0 = await fetch(url0);
     const data0 = await response0.json();
     this.setState({ vehs0: data0 });
-
-    
   }
   async componentDidUpdate() {
     //called after components are updated
@@ -56,8 +54,6 @@ export class QueryVehicleTypes extends Component {
     const response0 = await fetch(url0);
     const data0 = await response0.json();
     this.setState({ vehs0: data0 });
-
-    
   };
   onClickButton2 = async () => {
     this.setState({ typeofveh: 2 });
@@ -118,7 +114,7 @@ export class QueryVehicleTypes extends Component {
                       })
                     }
                   >
-                    Delete
+                    EXIT
                   </Button>
 
                   <DeleteVehModal
@@ -174,7 +170,7 @@ export class QueryVehicleTypes extends Component {
                       })
                     }
                   >
-                    Delete
+                    EXIT
                   </Button>
 
                   <DeleteVehModal
@@ -230,7 +226,7 @@ export class QueryVehicleTypes extends Component {
                       })
                     }
                   >
-                    Delete
+                    EXIT
                   </Button>
 
                   <DeleteVehModal
@@ -286,7 +282,7 @@ export class QueryVehicleTypes extends Component {
                       })
                     }
                   >
-                    Delete
+                    EXIT
                   </Button>
 
                   <DeleteVehModal
@@ -309,11 +305,12 @@ export class QueryVehicleTypes extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.onClickButton0}>All VEHICLES</button>
-        <button onClick={this.onClickButton2}>2 Wheelers</button>
-        <button onClick={this.onClickButton3}>3 Wheelers</button>
-        <button onClick={this.onClickButton4}>4 Wheelers</button>
-
+        <div>
+          <button onClick={this.onClickButton0}>All VEHICLES</button>
+          <button onClick={this.onClickButton2}>2 Wheelers</button>
+          <button onClick={this.onClickButton3}>3 Wheelers</button>
+          <button onClick={this.onClickButton4}>4 Wheelers</button>
+        </div>
         {(() => {
           if (this.state.typeofveh === 0) {
             return this.show0();
