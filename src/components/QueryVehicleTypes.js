@@ -3,6 +3,9 @@ import { Table } from "react-bootstrap";
 import { Button, ButtonToolbar } from "react-bootstrap";
 import { AddVehModal } from "./AddVehModal";
 import { DeleteVehModal } from "./DeleteVehModal";
+import SplitterLayout from "react-splitter-layout";
+import "react-splitter-layout/lib/index.css";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 export class QueryVehicleTypes extends Component {
   constructor(props) {
@@ -433,32 +436,43 @@ export class QueryVehicleTypes extends Component {
     );
   }
   render() {
+    let addModalClose = () => this.setState({ addModalShow: false });
     return (
-      <div>
-        <div class>
-          <button onClick={this.onClickButton0}>All VEHICLES</button>
-          <button onClick={this.onClickButton2}>2 Wheelers</button>
-          <button onClick={this.onClickButton3}>3 Wheelers</button>
-          <button onClick={this.onClickButton4}>4 Wheelers</button>
-          <button onClick={this.onClickButton5}>Heavy Weight</button>
-          <button onClick={this.onClickButton6}>Sort By Time</button>
-        </div>
-        {(() => {
-          if (this.state.typeofveh === 0) {
-            return this.show0();
-          }
-          if (this.state.typeofveh === 2) {
-            return this.show2();
-          } else if (this.state.typeofveh === 3) {
-            return this.show3();
-          } else if (this.state.typeofveh === 4) {
-            return this.show4();
-          } else if (this.state.typeofveh === 5) {
-            return this.show5();
-          } else if (this.state.typeofveh === 6) {
-            return this.show6();
-          }
-        })()}
+      <div class="container">
+        <SplitterLayout  percentage= 'true' secondaryMinSize="85">
+          <ButtonGroup vertical>
+            <Button variant="secondary" onClick={this.onClickButton0}>All VEHICLES</Button>
+            <Button variant="secondary" onClick={this.onClickButton2}>2 Wheelers</Button>
+            <Button variant="secondary" onClick={this.onClickButton3}>3 Wheelers</Button>
+            <Button variant="secondary" onClick={this.onClickButton4}>4 Wheelers</Button>
+            <Button variant="secondary" onClick={this.onClickButton5}>Heavy Weight</Button>
+            <Button variant="secondary" onClick={this.onClickButton6}>Sort By Time</Button>
+           
+            <Button variant="primary" onClick={() => this.setState({ addModalShow: true })}>Add Vehicle</Button>
+
+              <AddVehModal
+                show={this.state.addModalShow}
+                onHide={addModalClose}
+              ></AddVehModal>
+            
+          </ButtonGroup>
+          {(() => {
+            if (this.state.typeofveh === 0) {
+              return this.show0();
+            }
+            if (this.state.typeofveh === 2) {
+              return this.show2();
+            } else if (this.state.typeofveh === 3) {
+              return this.show3();
+            } else if (this.state.typeofveh === 4) {
+              return this.show4();
+            } else if (this.state.typeofveh === 5) {
+              return this.show5();
+            } else if (this.state.typeofveh === 6) {
+              return this.show6();
+            }
+          })()}
+        </SplitterLayout>
       </div>
     );
   }

@@ -4,12 +4,22 @@ import { Button, ButtonToolbar } from "react-bootstrap";
 import { AddVehModal } from "./AddVehModal";
 import { DeleteVehModal } from "./DeleteVehModal";
 import { QueryVehicleTypes } from "./QueryVehicleTypes";
+import SplitterLayout from "react-splitter-layout";
+import "react-splitter-layout/lib/index.css";
+
 
 export class Vehicle extends Component {
   constructor(props) {
     super(props);
-    this.state = { vehs: [], addModalShow: false, deleteModalShow: false };
+    this.state = {
+      vehs: [], addModalShow: false, deleteModalShow: false };
   }
+
+  // onChange = (event) => {
+  //   this.setState({
+  //     panes: event.newState
+  //   });
+  // }
 
   render() {
     const { vehs, vehid, vehtime } = this.state;
@@ -18,20 +28,7 @@ export class Vehicle extends Component {
     return (
       <div>
         <QueryVehicleTypes />
-
-        <ButtonToolbar>
-          <Button
-            variant="primary"
-            onClick={() => this.setState({ addModalShow: true })}
-          >
-            Add Vehicle
-          </Button>
-
-          <AddVehModal
-            show={this.state.addModalShow}
-            onHide={addModalClose}
-          ></AddVehModal>
-        </ButtonToolbar>
+        
       </div>
     );
   }
