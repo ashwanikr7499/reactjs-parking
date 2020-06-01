@@ -16,6 +16,13 @@ export class VehicleSpace extends Component {
       vehs4: [],
       vehs5: [],
       typeofveh: 0,
+
+      // for empty spaces
+      vehs2e: [],
+      vehs3e: [],
+      vehs4e: [],
+      vehs5e: [],
+      allOrEmpty: 0,
     };
     this.show0 = this.show0.bind(this);
     this.show2 = this.show2.bind(this);
@@ -32,36 +39,44 @@ export class VehicleSpace extends Component {
   }
 
   onClickButton0 = async () => {
-    this.setState({ typeofveh: 0 });
+    this.setState({ typeofveh: 0, allOrEmpty: 0 });
     const url0 = "http://localhost:8080/slots/";
     const response0 = await fetch(url0);
     const data0 = await response0.json();
     this.setState({ vehs0: data0 });
   };
   onClickButton2 = async () => {
-    this.setState({ typeofveh: 2 });
+    this.setState({ typeofveh: 2, allOrEmpty: 0 });
     const url2 = "http://localhost:8080/slots/2/";
     const response2 = await fetch(url2);
     const data2 = await response2.json();
     this.setState({ vehs2: data2 });
   };
 
+  onClickButton2e = async () => {
+    this.setState({ allOrEmpty: 1 });
+    const url2e = "http://localhost:8080/slots/2/empty";
+    const response2e = await fetch(url2e);
+    const data2e = await response2e.json();
+    this.setState({ vehs2e: data2e });
+  };
+
   onClickButton3 = async () => {
-    this.setState({ typeofveh: 3 });
+    this.setState({ typeofveh: 3, allOrEmpty: 0 });
     const url3 = "http://localhost:8080/slots/3/";
     const response3 = await fetch(url3);
     const data3 = await response3.json();
     this.setState({ vehs3: data3 });
   };
   onClickButton4 = async () => {
-    this.setState({ typeofveh: 4 });
+    this.setState({ typeofveh: 4, allOrEmpty: 0 });
     const url4 = "http://localhost:8080/slots/4/";
     const response4 = await fetch(url4);
     const data4 = await response4.json();
     this.setState({ vehs4: data4 });
   };
   onClickButton5 = async () => {
-    this.setState({ typeofveh: 5 });
+    this.setState({ typeofveh: 5, allOrEmpty: 0 });
     const url5 = "http://localhost:8080/slots/heavy/";
     const response5 = await fetch(url5);
     const data5 = await response5.json();
@@ -70,7 +85,14 @@ export class VehicleSpace extends Component {
   show0() {
     const { vehs0 } = this.state;
     return (
-      <Table className="mt-4 ml-1" size="sm" striped bordered hover variant="dark">
+      <Table
+        className="mt-4 ml-1"
+        size="sm"
+        striped
+        bordered
+        hover
+        variant="dark"
+      >
         <thead>
           <tr>
             <th>Slot Number</th>
@@ -79,7 +101,7 @@ export class VehicleSpace extends Component {
             <th>isEmpty</th>
           </tr>
         </thead>
-        <tbody >
+        <tbody>
           {vehs0.map((veh0) => (
             <tr key={veh0.slotNo}>
               <td>{veh0.slotNo}</td>
@@ -94,33 +116,72 @@ export class VehicleSpace extends Component {
   }
   show2() {
     const { vehs2 } = this.state;
+    const { vehs2e } = this.state;
+    const { allOrEmpty } = this.state;
     return (
-      <Table className="mt-4"  striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>Slot Number</th>
-            <th>Vehicle Number</th>
-            <th>SlotType</th>
-            <th>isEmpty</th>
-          </tr>
-        </thead>
-        <tbody>
-          {vehs2.map((veh2) => (
-            <tr key={veh2.slotNo}>
-              <td>{veh2.slotNo}</td>
-              <td>{veh2.vehicleNo}</td>
-              <td>{veh2.slotType}</td>
-              <td>{veh2.isEmpty}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      <div>
+        <Button size="lg" className="mr-2" onClick={ this.onClickButton2}>
+          All Slots
+        </Button>
+        <Button size="lg" className="mr-2" onClick={this.onClickButton2e}>
+          Empty Slots
+        </Button>
+        {(() => {
+          if (allOrEmpty === 0) {
+            return (
+              <Table className="mt-4" striped bordered hover variant="dark">
+                <thead>
+                  <tr>
+                    <th>Slot Number</th>
+                    <th>Vehicle Number</th>
+                    <th>SlotType</th>
+                    <th>isEmpty</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {vehs2.map((veh2) => (
+                    <tr key={veh2.slotNo}>
+                      <td>{veh2.slotNo}</td>
+                      <td>{veh2.vehicleNo}</td>
+                      <td>{veh2.slotType}</td>
+                      <td>{veh2.isEmpty}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            );
+          } else if (allOrEmpty === 1) {
+            return (
+              <Table className="mt-4" striped bordered hover variant="dark">
+                <thead>
+                  <tr>
+                    <th>Slot Number</th>
+                    <th>Vehicle Number</th>
+                    <th>SlotType</th>
+                    <th>isEmpty</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {vehs2e.map((veh2e) => (
+                    <tr key={veh2e.slotNo}>
+                      <td>{veh2e.slotNo}</td>
+                      <td>{veh2e.vehicleNo}</td>
+                      <td>{veh2e.slotType}</td>
+                      <td>{veh2e.isEmpty}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            );
+          }
+        })()}
+      </div>
     );
   }
   show3() {
     const { vehs3 } = this.state;
     return (
-      <Table className="mt-4"  striped bordered hover variant="dark">
+      <Table className="mt-4" striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>Slot Number</th>
@@ -145,7 +206,7 @@ export class VehicleSpace extends Component {
   show4() {
     const { vehs4 } = this.state;
     return (
-      <Table className="mt-4"  striped bordered hover variant="dark">
+      <Table className="mt-4" striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>Slot Number</th>
@@ -170,7 +231,7 @@ export class VehicleSpace extends Component {
   show5() {
     const { vehs5 } = this.state;
     return (
-      <Table className="mt-4"  striped bordered hover variant="dark">
+      <Table className="mt-4" striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>Slot Number</th>

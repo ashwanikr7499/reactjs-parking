@@ -463,7 +463,7 @@ export class QueryVehicleTypes extends Component {
             >
               2 Wheelers
             </Button>
-            
+
             <Button
               className="mt-1"
               variant="info"
@@ -509,7 +509,7 @@ export class QueryVehicleTypes extends Component {
             <AddVehModal
               show={this.state.addModalShow}
               onHide={addModalClose}
-            ></AddVehModal>
+            ></AddVehModal> 
           </ButtonGroup>
 
           {/* 2 */}
