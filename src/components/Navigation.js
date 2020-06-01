@@ -10,13 +10,13 @@ export class Navigation extends Component
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav>
-                <NavLink className="d-inline p-2 bg-dark text-white" to="/">
+                <NavLink className=" p-2  text-white" to="/">
                   Home
                 </NavLink>
-                <NavLink className="d-inline p-2 bg-dark text-white" to="/vehicle">
+                <NavLink className=" p-2  text-white" to="/vehicle">
                   Vehicle
                 </NavLink>
-                <NavLink className="d-inline p-2 bg-dark text-white" to="/slots">
+                <NavLink className=" p-2  text-white" to="/slots">
                   VehicleSpace
                 </NavLink>
               </Nav>

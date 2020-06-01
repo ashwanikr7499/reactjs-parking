@@ -128,7 +128,7 @@ export class AddVehModal extends Component {
                   </Form.Group>
 
                   <Form.Group>
-                    <Button variant="primary" type="Submit">
+                    <Button variant="success" type="Submit">
                       Add Vehicle
                     </Button>
                   </Form.Group>

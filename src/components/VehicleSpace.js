@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
 import { Button, ButtonToolbar } from "react-bootstrap";
+import SplitterLayout from "react-splitter-layout";
+import "react-splitter-layout/lib/index.css";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Spinner from "react-bootstrap/Spinner";
 
 export class VehicleSpace extends Component {
   constructor(props) {
@@ -66,16 +70,16 @@ export class VehicleSpace extends Component {
   show0() {
     const { vehs0 } = this.state;
     return (
-      <Table className="mt-4" striped bordered hover size="sm">
+      <Table className="mt-4 ml-1" size="sm" striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>slotNo</th>
-            <th>vehicleNo</th>
-            <th>slotType</th>
+            <th>Slot Number</th>
+            <th>Vehicle Number</th>
+            <th>SlotType</th>
             <th>isEmpty</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
           {vehs0.map((veh0) => (
             <tr key={veh0.slotNo}>
               <td>{veh0.slotNo}</td>
@@ -91,12 +95,12 @@ export class VehicleSpace extends Component {
   show2() {
     const { vehs2 } = this.state;
     return (
-      <Table className="mt-4" striped bordered hover size="sm">
+      <Table className="mt-4"  striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>slotNo</th>
-            <th>vehicleNo</th>
-            <th>slotType</th>
+            <th>Slot Number</th>
+            <th>Vehicle Number</th>
+            <th>SlotType</th>
             <th>isEmpty</th>
           </tr>
         </thead>
@@ -116,12 +120,12 @@ export class VehicleSpace extends Component {
   show3() {
     const { vehs3 } = this.state;
     return (
-      <Table className="mt-4" striped bordered hover size="sm">
+      <Table className="mt-4"  striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>slotNo</th>
-            <th>vehicleNo</th>
-            <th>slotType</th>
+            <th>Slot Number</th>
+            <th>Vehicle Number</th>
+            <th>SlotType</th>
             <th>isEmpty</th>
           </tr>
         </thead>
@@ -141,12 +145,12 @@ export class VehicleSpace extends Component {
   show4() {
     const { vehs4 } = this.state;
     return (
-      <Table className="mt-4" striped bordered hover size="sm">
+      <Table className="mt-4"  striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>slotNo</th>
-            <th>vehicleNo</th>
-            <th>slotType</th>
+            <th>Slot Number</th>
+            <th>Vehicle Number</th>
+            <th>SlotType</th>
             <th>isEmpty</th>
           </tr>
         </thead>
@@ -166,12 +170,12 @@ export class VehicleSpace extends Component {
   show5() {
     const { vehs5 } = this.state;
     return (
-      <Table className="mt-4" striped bordered hover size="sm">
+      <Table className="mt-4"  striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>slotNo</th>
-            <th>vehicleNo</th>
-            <th>slotType</th>
+            <th>Slot Number</th>
+            <th>Vehicle Number</th>
+            <th>SlotType</th>
             <th>isEmpty</th>
           </tr>
         </thead>
@@ -190,13 +194,49 @@ export class VehicleSpace extends Component {
   }
   render() {
     return (
-      <div>
-        <button onClick={this.onClickButton0}>All SLOTS</button>
-        <button onClick={this.onClickButton2}>2 Wheeler Slots</button>
-        <button onClick={this.onClickButton3}>3 Wheeler Slots</button>
-        <button onClick={this.onClickButton4}>4 Wheeler Slots</button>
-        <button onClick={this.onClickButton5}>Heavy Vehicle Slots</button>
-
+      <SplitterLayout percentage="true" secondaryMinSize="85">
+        <ButtonGroup className="mt-4" vertical>
+          <Button
+            className=" ml-4"
+            variant="primary"
+            size="lg"
+            onClick={this.onClickButton0}
+          >
+            All SLOTS
+          </Button>
+          <Button
+            className="mt-1 ml-4"
+            variant="info"
+            size="lg"
+            onClick={this.onClickButton2}
+          >
+            2 Wheeler Slots
+          </Button>
+          <Button
+            className="mt-1 ml-4"
+            variant="info"
+            size="lg"
+            onClick={this.onClickButton3}
+          >
+            3 Wheeler Slots
+          </Button>
+          <Button
+            className="mt-1 ml-4"
+            variant="info"
+            size="lg"
+            onClick={this.onClickButton4}
+          >
+            4 Wheeler Slots
+          </Button>
+          <Button
+            className="mt-1 ml-4"
+            variant="info"
+            size="lg"
+            onClick={this.onClickButton5}
+          >
+            Heavy Vehicle Slots
+          </Button>
+        </ButtonGroup>
         {(() => {
           if (this.state.typeofveh === 0) {
             return this.show0();
@@ -211,7 +251,7 @@ export class VehicleSpace extends Component {
             return this.show5();
           }
         })()}
-      </div>
+      </SplitterLayout>
     );
   }
 }

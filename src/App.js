@@ -2,7 +2,7 @@ import React from "react";
 
 import "./App.css";
 import { Navigation } from "./components/Navigation";
-import { Vehicle } from "./components/Vehicle";
+import { QueryVehicleTypes } from "./components/QueryVehicleTypes";
 import { VehicleSpace } from "./components/VehicleSpace";
 import { Home } from "./components/Home";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -11,13 +11,13 @@ function App() {
   return (
     <BrowserRouter>
       <div className="container">
-        <h3 className="d-flex justify-content-centre"> Parking lot application!! Hey ash_k,</h3>
+        <h3 className="m-3 justify-content-right"> Parking lot application!!</h3>
       
         <Navigation />
        
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/vehicle" component={Vehicle} />
+          <Route path="/vehicle" component={QueryVehicleTypes} />
           <Route path="/slots" component={VehicleSpace} />
         </Switch>
       </div>
