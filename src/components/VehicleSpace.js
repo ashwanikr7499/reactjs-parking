@@ -120,7 +120,7 @@ export class VehicleSpace extends Component {
     const { allOrEmpty } = this.state;
     return (
       <div>
-        <Button size="lg" className="mr-2" onClick={ this.onClickButton2}>
+        <Button size="lg" className="mr-2" onClick={this.onClickButton2}>
           All Slots
         </Button>
         <Button size="lg" className="mr-2" onClick={this.onClickButton2e}>
@@ -181,76 +181,100 @@ export class VehicleSpace extends Component {
   show3() {
     const { vehs3 } = this.state;
     return (
-      <Table className="mt-4" striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>Slot Number</th>
-            <th>Vehicle Number</th>
-            <th>SlotType</th>
-            <th>isEmpty</th>
-          </tr>
-        </thead>
-        <tbody>
-          {vehs3.map((veh3) => (
-            <tr key={veh3.slotNo}>
-              <td>{veh3.slotNo}</td>
-              <td>{veh3.vehicleNo}</td>
-              <td>{veh3.slotType}</td>
-              <td>{veh3.isEmpty}</td>
+      <div>
+        <Button size="lg" className="mr-2" onClick={this.onClickButton2}>
+          All Slots
+        </Button>
+        <Button size="lg" className="mr-2" onClick={this.onClickButton2e}>
+          Empty Slots
+        </Button>
+        <Table className="mt-4" striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>Slot Number</th>
+              <th>Vehicle Number</th>
+              <th>SlotType</th>
+              <th>isEmpty</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {vehs3.map((veh3) => (
+              <tr key={veh3.slotNo}>
+                <td>{veh3.slotNo}</td>
+                <td>{veh3.vehicleNo}</td>
+                <td>{veh3.slotType}</td>
+                <td>{veh3.isEmpty}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     );
   }
   show4() {
     const { vehs4 } = this.state;
     return (
-      <Table className="mt-4" striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>Slot Number</th>
-            <th>Vehicle Number</th>
-            <th>SlotType</th>
-            <th>isEmpty</th>
-          </tr>
-        </thead>
-        <tbody>
-          {vehs4.map((veh4) => (
-            <tr key={veh4.slotNo}>
-              <td>{veh4.slotNo}</td>
-              <td>{veh4.vehicleNo}</td>
-              <td>{veh4.slotType}</td>
-              <td>{veh4.isEmpty}</td>
+      <div>
+        <Button size="lg" className="mr-2" onClick={this.onClickButton2}>
+          All Slots
+        </Button>
+        <Button size="lg" className="mr-2" onClick={this.onClickButton2e}>
+          Empty Slots
+        </Button>
+        <Table className="mt-4" striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>Slot Number</th>
+              <th>Vehicle Number</th>
+              <th>SlotType</th>
+              <th>isEmpty</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {vehs4.map((veh4) => (
+              <tr key={veh4.slotNo}>
+                <td>{veh4.slotNo}</td>
+                <td>{veh4.vehicleNo}</td>
+                <td>{veh4.slotType}</td>
+                <td>{veh4.isEmpty}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     );
   }
   show5() {
     const { vehs5 } = this.state;
     return (
-      <Table className="mt-4" striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>Slot Number</th>
-            <th>Vehicle Number</th>
-            <th>SlotType</th>
-            <th>isEmpty</th>
-          </tr>
-        </thead>
-        <tbody>
-          {vehs5.map((veh5) => (
-            <tr key={veh5.slotNo}>
-              <td>{veh5.slotNo}</td>
-              <td>{veh5.vehicleNo}</td>
-              <td>{veh5.slotType}</td>
-              <td>{veh5.isEmpty}</td>
+      <div>
+        <Button size="lg" className="mr-2" onClick={this.onClickButton2}>
+          All Slots
+        </Button>
+        <Button size="lg" className="mr-2" onClick={this.onClickButton2e}>
+          Empty Slots
+        </Button>
+        <Table className="mt-4" striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>Slot Number</th>
+              <th>Vehicle Number</th>
+              <th>SlotType</th>
+              <th>isEmpty</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {vehs5.map((veh5) => (
+              <tr key={veh5.slotNo}>
+                <td>{veh5.slotNo}</td>
+                <td>{veh5.vehicleNo}</td>
+                <td>{veh5.slotType}</td>
+                <td>{veh5.isEmpty}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     );
   }
   render() {
