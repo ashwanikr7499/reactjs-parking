@@ -5,38 +5,31 @@ import IconButton from "@material-ui/core/IconButton";
 export class DeleteVehModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { snackbaropen: false, snackbarmsg: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  snackbarClose = (event) => {
-    this.setState({ snackbaropen: false });
-  };
+
   handleSubmit(event) {
     event.preventDefault();
     fetch("http://localhost:8080/vehicles/exit", {
       method: "DELETE",
-      //mode: "no-cors",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+
       body: JSON.stringify({
         vehicleNo: event.target.vehicleNo.value,
         time: event.target.time.value,
       }),
     })
-      //console.log(result);
-
       .then((res) => res.text())
       .then(
         (result) => {
           alert(result);
-          // this.setState({ snackbaropen: true, snackbarmsg: result });
         },
         //error in consuming api
         (error) => {
           alert("Failed");
-          //this.setState({ snackbaropen: true, snackbarmsg: "Failed" });
         }
       );
   }
@@ -44,38 +37,29 @@ export class DeleteVehModal extends Component {
   render() {
     return (
       <div className="container">
-        <Snackbar
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-          open={this.state.snackbaropen}
-          autoHideDuration={3000}
-          onClose={this.snackbarClose}
-          message={<span id="message-id">{this.state.snackbarmsg}</span>}
-          action={[
-            <IconButton
-              key="close"
-              arial-label="Close"
-              color="inherit"
-              onClick={this.snackbarClose}
-            >
-              X
-            </IconButton>,
-          ]}
-        />
+        {/* Modal Window */}
+
         <Modal
           {...this.props}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
+          {/* Modal Window Header */}
+
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
               Exit Vehicle
             </Modal.Title>
           </Modal.Header>
+
+          {/* Modal Window Body */}
+
           <Modal.Body>
             <Row>
               <Col sm={6}>
                 <Form onSubmit={this.handleSubmit}>
+                  {/* Input Vehicle No */}
                   <Form.Group controlId="vehicleNo">
                     <Form.Label>Vehicle Number</Form.Label>
                     <Form.Control
@@ -88,6 +72,7 @@ export class DeleteVehModal extends Component {
                     />
                   </Form.Group>
 
+                  {/* Input OutTime */}
                   <Form.Group controlId="time">
                     <Form.Label>Exit Time</Form.Label>
                     <Form.Control
@@ -99,6 +84,7 @@ export class DeleteVehModal extends Component {
                     />
                   </Form.Group>
 
+                  {/* Exit Vehicle Button */}
                   <Form.Group>
                     <Button variant="primary" type="Submit">
                       Exit Vehicle
@@ -108,6 +94,9 @@ export class DeleteVehModal extends Component {
               </Col>
             </Row>
           </Modal.Body>
+
+          {/* Modal Window Footer */}
+
           <Modal.Footer>
             <Button variant="danger" onClick={this.props.onHide}>
               Close

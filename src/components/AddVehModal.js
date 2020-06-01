@@ -45,6 +45,8 @@ export class AddVehModal extends Component {
   render() {
     return (
       <div className="container">
+        {/* Snackbar attributes */}
+
         <Snackbar
           anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
           open={this.state.snackbaropen}
@@ -62,21 +64,30 @@ export class AddVehModal extends Component {
             </IconButton>,
           ]}
         />
+
+        {/* Add Vehicle Modal Window */}
+
         <Modal
           {...this.props}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
+          {/* Modal Window Header */}
+
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              Add Vehicle
+              Get Vehicle
             </Modal.Title>
           </Modal.Header>
+
+          {/* Modal Window Body */}
+
           <Modal.Body>
             <Row>
               <Col sm={6}>
                 <Form onSubmit={this.handleSubmit}>
+                  {/* Input Vehicle No */}
                   <Form.Group controlId="vehicleNo">
                     <Form.Label>Vehicle Number</Form.Label>
                     <Form.Control
@@ -87,6 +98,7 @@ export class AddVehModal extends Component {
                     />
                   </Form.Group>
 
+                  {/* Input Slot No */}
                   <Form.Group controlId="slotNo">
                     <Form.Label>Slot Number</Form.Label>
                     <Form.Control
@@ -97,6 +109,7 @@ export class AddVehModal extends Component {
                     />
                   </Form.Group>
 
+                  {/* Input Vehicle Type */}
                   <Form.Group controlId="vehicleType">
                     <Form.Label>Vehicle Type</Form.Label>
                     <Form.Control
@@ -107,6 +120,7 @@ export class AddVehModal extends Component {
                     />
                   </Form.Group>
 
+                  {/* Input Time */}
                   <Form.Group controlId="time">
                     <Form.Label>In Time</Form.Label>
                     <Form.Control
@@ -117,6 +131,7 @@ export class AddVehModal extends Component {
                     />
                   </Form.Group>
 
+                  {/* Input Colour */}
                   <Form.Group controlId="colour">
                     <Form.Label>Colour</Form.Label>
                     <Form.Control
@@ -127,6 +142,7 @@ export class AddVehModal extends Component {
                     />
                   </Form.Group>
 
+                  {/* Submit Vehicle */}
                   <Form.Group>
                     <Button variant="success" type="Submit">
                       Add Vehicle
@@ -136,11 +152,15 @@ export class AddVehModal extends Component {
               </Col>
             </Row>
           </Modal.Body>
+
+          {/* Modal Window Footer  */}
+
           <Modal.Footer>
             <Button variant="danger" onClick={this.props.onHide}>
               Close
             </Button>
           </Modal.Footer>
+          
         </Modal>
       </div>
     );
